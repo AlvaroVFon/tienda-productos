@@ -19,7 +19,21 @@ class FakeStoreApi {
       })
     return response.data
   }
+  async getProductsByName(names) {
+    const response = await this.axiosInstance
+      .get(`/products`)
+      .then((response) => {
+        return response.data.filter((product) =>
+          product.title.toLowerCase().includes(names.toLowerCase())
+        )
+      })
+      .catch((error) => {
+        return error
+      })
+    console.log(response)
+    return response
+  }
 }
 
-const api = new FakeStoreApi('https://fakestoreapi.com')
+const api = new FakeStoreApi('https://api.escuelajs.co/api/v1/')
 export default api

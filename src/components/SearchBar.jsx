@@ -1,12 +1,18 @@
+'use client'
+import { useRouter } from 'next/navigation'
 function SearchBar() {
+  const router = useRouter()
   return (
     <div>
       <input
         type='text'
         placeholder='Search for products'
-        className='border border-gray-300 p-2 w-full'
+        className='p-2 w-full font-thin rounded-full text-black'
+        name='search'
+        onChange={(e) => {
+          router.push(`/search?search=${e.target.value}`)
+        }}
       />
-      <button></button>
     </div>
   )
 }

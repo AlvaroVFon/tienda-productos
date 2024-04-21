@@ -1,18 +1,22 @@
 import api from '@/lib/FakeStoreApi'
+import Image from 'next/image'
 async function ProductList() {
   const products = await api.getProducts()
-  console.log(products)
+
   return (
-    <div>
-      <h1>Products</h1>
-      <div className=''>
-        {products.map((product) => (
-          <div>
-            <h3>{product.title}</h3>
-            <img src={product.image} alt={product.title} />
-          </div>
-        ))}
-      </div>
+    <div className='grid grid-cols-6 gap-5 p-10'>
+      {products.map((product) => (
+        <div key={product.id}>
+          <Image
+            src={product.images[0]}
+            alt={product.title}
+            width={300}
+            height={300}
+            className='h-64 w-52 rounded-lg'
+          />
+          <p>{product.title}</p>
+        </div>
+      ))}
     </div>
   )
 }

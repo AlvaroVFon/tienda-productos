@@ -11,10 +11,10 @@ async function SearchPage({ searchParams }) {
         {products.map((product) => (
           <div key={product.id} className=''>
             <Image
-              src={product.image}
+              src={`https://source.unsplash.com/random/200x200?sig=${product.id}`}
               alt={product.title}
-              width={200}
-              height={200}
+              width={300}
+              height={300}
               className='h-64 w-52 rounded-lg'
             />
             <div className=''>

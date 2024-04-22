@@ -30,7 +30,6 @@ class FakeStoreApi {
       .catch((error) => {
         return error
       })
-    console.log(response)
     return response
   }
 }
